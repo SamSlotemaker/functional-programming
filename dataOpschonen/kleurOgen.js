@@ -1,6 +1,8 @@
 let kleurOgen = require('../kleurOgen.json')
 let favorieteKleuren = require('../favorieteKleuren.json')
+let kleurCodes = require('./colorCodes.js')
 const rgbHex = require('rgb-hex')
+
 
 let kleurOgenArray = cleanColorData(kleurOgen, "KleurOgen")
 console.log("kleur ogen: \n", kleurOgenArray)
@@ -16,7 +18,7 @@ function cleanColorData(array, objectNaam) {
     array.forEach((kleur, index) => {
         let nieuweKleur = kleur[objectNaam]
 
-        //verwijder spaties
+        //verwijder ongewenste tekens
         nieuweKleur = nieuweKleur
             .toLowerCase()
             .replace(/\s/g, '')
@@ -49,24 +51,15 @@ function cleanColorData(array, objectNaam) {
     return kleurenArray;
 }
 
+
+// console.log(kleurCodes);
+
 //check op kleurnamen en return bijhorende CSS hex
 function nameToHex(name) {
-    if (name == "blauw") {
-        return "#0000FF"
-    } else if (name == 'groen' || name == 'legergroen') {
-        return "#008000"
-    } else if (name == 'bruin') {
-        return "#A52A2A"
-    } else if (name == 'lichtblauw') {
-        return "#ADD8E6"
-    } else if (name == 'geel') {
-        return "#FFFF00"
-    } else if (name == 'rood') {
-        return "#FF0000"
-    } else if (name == 'zwart') {
-        return "#000000"
-    } else if (name == 'grijs' || name == 'staal') {
-        return "#808080"
+    for (kleur of kleurCodes) {
+        if (name == kleur.naam) {
+            return kleur.kleurCode
+        }
     }
     return false;
 }
