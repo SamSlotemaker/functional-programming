@@ -1,26 +1,20 @@
 let kleurOgen = require('../kleurOgen.json')
 let favorieteKleuren = require('../favorieteKleuren.json')
 const rgbHex = require('rgb-hex')
-console.log('test')
-//nieuwe array om originele array bewaard te houden
+
 let kleurOgenArray = cleanColorData(kleurOgen, "KleurOgen")
 console.log("kleur ogen: \n", kleurOgenArray)
 
 let favorieteKleurArray = cleanColorData(favorieteKleuren, "Lievelingskleur")
 console.log("favoriete kleuren: \n", favorieteKleurArray)
 
+//functie declaraties
 function cleanColorData(array, objectNaam) {
     let kleurenArray = [];
 
+    //loop door elk object in de array
     array.forEach((kleur, index) => {
         let nieuweKleur = kleur[objectNaam]
-
-        //maak string van getallen
-        if (typeof nieuweKleur != 'string') {
-            console.log("nummertje broer")
-        }
-
-
 
         //verwijder spaties
         nieuweKleur = nieuweKleur
@@ -28,8 +22,6 @@ function cleanColorData(array, objectNaam) {
             .replace(/\s/g, '')
             .replace(".", "")
             .replace("/", "")
-            .replace(null, "niet-ingevuld")
-
 
         //maak een hex van rgb kleuren (gefilterd op de komma in rgb)
         if (nieuweKleur.includes(',')) {
@@ -40,14 +32,7 @@ function cleanColorData(array, objectNaam) {
             nieuweKleur = nameToHex(nieuweKleur)
         }
 
-        //voeg hash toe wanneer deze ontbreekt
-        if (nieuweKleur[0] != '#') {
-            nieuweKleur = '#' + nieuweKleur
-
-            if (nieuweKleur === '#') {
-                nieuweKleur = null
-            }
-        }
+        nieuweKleur = addHash(nieuweKleur)
 
         //maak wit en zwart voor alle rijen gelijk
         if (nieuweKleur === '#fff') {
@@ -55,7 +40,6 @@ function cleanColorData(array, objectNaam) {
         } else if (nieuweKleur === '#000') {
             nieuweKleur = '#000000'
         }
-
 
         kleurenArray.push({
             'student': index,
@@ -84,6 +68,17 @@ function nameToHex(name) {
     } else if (name == 'grijs' || name == 'staal') {
         return "#808080"
     }
-
     return false;
+}
+
+//voeg hash toe wanneer deze ontbreekt
+function addHash(kleur) {
+    if (kleur[0] != '#') {
+        kleur = '#' + kleur
+
+        if (kleur === '#') {
+            kleur = null
+        }
+    }
+    return kleur;
 }
