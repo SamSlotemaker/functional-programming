@@ -1,14 +1,17 @@
-let kleurOgen = require('../kleurOgen.json')
-let favorieteKleuren = require('../favorieteKleuren.json')
-let kleurCodes = require('./colorCodes.js')
-const rgbHex = require('rgb-hex')
+const kleurOgen = kleurOgenData
+const favorieteKleuren = lievelingsKleuren
+const kleurCodes = kleurObjecten;
 
 
-let kleurOgenArray = cleanColorData(kleurOgen, "KleurOgen")
+// start functiechain
+const kleurOgenArray = cleanColorData(kleurOgen, "KleurOgen")
+const favorieteKleurArray = cleanColorData(favorieteKleuren, "Lievelingskleur")
+
 console.log("kleur ogen: \n", kleurOgenArray)
-
-let favorieteKleurArray = cleanColorData(favorieteKleuren, "Lievelingskleur")
 console.log("favoriete kleuren: \n", favorieteKleurArray)
+console.log(`aantal rijen over: ${kleurOgenArray.length}`)
+console.log(`aantal rijen over: ${favorieteKleurArray.length}`)
+
 
 //functie declaraties
 function cleanColorData(array, objectNaam) {
@@ -25,34 +28,26 @@ function cleanColorData(array, objectNaam) {
             .replace(".", "")
             .replace("/", "")
 
-        //maak een hex van rgb kleuren (gefilterd op de komma in rgb)
-        if (nieuweKleur.includes(',')) {
-            nieuweKleur = `#${rgbHex(nieuweKleur)}`
-        }
         //kleurnamen naar hexcode
         if (nameToHex(nieuweKleur)) {
             nieuweKleur = nameToHex(nieuweKleur)
         }
 
+        //zet 3 charachter hex om naar 6
+        nieuweKleur = hexThreeToSix(nieuweKleur)
+
+        //voeg een hash toe aan alle kleuren wanneer deze ontbreekt
         nieuweKleur = addHash(nieuweKleur)
 
-        //maak wit en zwart voor alle rijen gelijk
-        if (nieuweKleur === '#fff') {
-            nieuweKleur = '#ffffff'
-        } else if (nieuweKleur === '#000') {
-            nieuweKleur = '#000000'
+        if (validateHex(nieuweKleur)) {
+            kleurenArray.push({
+                'student': index + 1,
+                [objectNaam]: nieuweKleur
+            })
         }
-
-        kleurenArray.push({
-            'student': index,
-            'kleurOgen': nieuweKleur
-        })
     })
     return kleurenArray;
 }
-
-
-// console.log(kleurCodes);
 
 //check op kleurnamen en return bijhorende CSS hex
 function nameToHex(name) {
@@ -68,10 +63,23 @@ function nameToHex(name) {
 function addHash(kleur) {
     if (kleur[0] != '#') {
         kleur = '#' + kleur
-
-        if (kleur === '#') {
-            kleur = null
-        }
     }
     return kleur;
+}
+
+//check of het een valide kleur is
+function validateHex(kleur) {
+    return /^#[0-9A-F]{6}$/i.test(kleur)
+}
+
+//convert hash van 3 chars naar 6
+function hexThreeToSix(kleur) {
+    //verwijder hash wanneer aanwezig
+    kleur = kleur.replace('#', '')
+
+    //pas hex patroon toe op 3 char hex
+    if (kleur.length == 3) {
+        kleur = kleur[0] + kleur[0] + kleur[1] + kleur[1] + kleur[2] + kleur[2]
+    }
+    return kleur
 }

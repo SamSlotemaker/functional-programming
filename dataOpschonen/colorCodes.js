@@ -1,4 +1,4 @@
-let kleurObjecten = [{
+const kleurObjecten = [{
         naam: "blauw",
         kleurCode: "0000FF"
     },
@@ -39,5 +39,3 @@ let kleurObjecten = [{
         kleurCode: "#B7B8BC"
     },
 ]
-
-module.exports = kleurObjecten;
