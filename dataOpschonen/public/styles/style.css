@@ -1,24 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    font-family: sans-serif;
-    font-weight: 600;
+    background-color: rgb(14, 15, 32);
 }
 
 .color-container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 1em;
     padding: 1em;
 }
 
 .color-container h2 {
     grid-column: 1 / -1;
+    color: white;
     text-align: center;
+    font-size: 3em;
 }
 
 .color-container div {
@@ -29,4 +33,41 @@ body {
     align-items: flex-end;
     justify-content: center;
     border-radius: 1em;
+}
+
+.color-container div p {
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+@media screen and (max-width: 1100px) {
+    .color-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .color-container div {
+        height: calc(100vw/5);
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .color-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .color-container div {
+        height: calc(100vw/4);
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .color-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .color-container div {
+        height: calc(100vw/4);
+    }
 }

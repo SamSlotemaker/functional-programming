@@ -1,40 +1,32 @@
 const kleurOgen = kleurOgenData
 const kleurOgenPropertyName = "KleurOgen"
 const favorieteKleuren = lievelingsKleuren
+const favorieteKleurenPorpertyName = "Lievelingskleur"
 const kleurCodes = kleurObjecten;
 
 
 // start functiechain
-
 const favorieteKleurArray = cleanColorData(favorieteKleuren, "Lievelingskleur")
-
-// console.log("kleur ogen: \n", kleurOgenArray)
-// console.log("favoriete kleuren: \n", favorieteKleurArray)
-// console.log(`aantal rijen over: ${kleurOgenArray.length}`)
-// console.log(`aantal rijen over: ${favorieteKleurArray.length}`)
+const kleurOgenArray = cleanColorData(kleurOgen, kleurOgenPropertyName)
 
 //voegt de kleuren toe aan de dom (arry + propertynaam)
-// console.log(kleurOgenArray)
-// console.log(kleurOgenArraySorted)
 
-const kleurOgenArray = cleanColorData(kleurOgen, kleurOgenPropertyName)
-let kleurOgenArraySorted = [];
 
-kleurOgenArray.forEach((kleur) => {
-    kleurOgenArraySorted.push({
-        [kleurOgenPropertyName]: kleur[kleurOgenPropertyName]
-    })
-})
-
-console.log(kleurOgenArraySorted)
-
+//sorteer arrays
+let kleurOgenArraySorted = [...kleurOgenArray];
 kleurOgenArraySorted.sort((a, b) => {
     return getContrastYIQ(a[kleurOgenPropertyName]) - getContrastYIQ(b[kleurOgenPropertyName])
 })
 
-addToDoc(kleurOgenArray, kleurOgenPropertyName);
-addToDoc(kleurOgenArraySorted, kleurOgenPropertyName);
+let favorieteKleurArraySorted = [...favorieteKleurArray]
+favorieteKleurArraySorted.sort((a, b) => {
+    return getContrastYIQ(a[favorieteKleurenPorpertyName]) - getContrastYIQ(b[favorieteKleurenPorpertyName])
+})
 
+
+// addToDoc(kleurOgenArray, kleurOgenPropertyName);
+addToDoc(favorieteKleurArraySorted, favorieteKleurenPorpertyName)
+addToDoc(kleurOgenArraySorted, kleurOgenPropertyName);
 // addToDoc(favorieteKleurArray, "Lievelingskleur")
 
 
