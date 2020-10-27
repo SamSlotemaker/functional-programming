@@ -15,12 +15,12 @@ const kleurOgenArray = cleanColorData(kleurOgen, kleurOgenPropertyName)
 //sorteer arrays
 let kleurOgenArraySorted = [...kleurOgenArray];
 kleurOgenArraySorted.sort((a, b) => {
-    return getContrastYIQ(a[kleurOgenPropertyName]) - getContrastYIQ(b[kleurOgenPropertyName])
+    return getContrastYIQ(b[kleurOgenPropertyName]) - getContrastYIQ(a[kleurOgenPropertyName])
 })
 
 let favorieteKleurArraySorted = [...favorieteKleurArray]
 favorieteKleurArraySorted.sort((a, b) => {
-    return getContrastYIQ(a[favorieteKleurenPorpertyName]) - getContrastYIQ(b[favorieteKleurenPorpertyName])
+    return getContrastYIQ(b[favorieteKleurenPorpertyName]) - getContrastYIQ(a[favorieteKleurenPorpertyName])
 })
 
 
