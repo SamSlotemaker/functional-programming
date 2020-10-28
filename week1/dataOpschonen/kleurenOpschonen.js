@@ -5,7 +5,7 @@ const favorieteKleurenPorpertyName = "Lievelingskleur"
 const kleurCodes = kleurObjecten;
 
 
-// start functiechain
+// maak de hex kleuren schoon en bruikbaar
 const favorieteKleurArray = cleanColorData(favorieteKleuren, "Lievelingskleur")
 const kleurOgenArray = cleanColorData(kleurOgen, kleurOgenPropertyName)
 

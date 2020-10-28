@@ -1,19 +1,52 @@
-const specificatiesParkeergebied = 'https://opendata.rdw.nl/resource/b3us-f26s.json'
-const columnCapacity = 'capacity'
+const geoVerkoopPuntenURL = 'https://opendata.rdw.nl/resource/cgqw-pfbp.json?$limit=10000'
+const tariefdeelURL = 'https://opendata.rdw.nl/resource/534e-5vdg.json?$limit=10000'
+const columnLocation = 'location'
+const columnStepSizeFarePart = 'stepsizefarepart'
+const columnAmountFarePart = 'amountfarepart'
 
-
-getData(specificatiesParkeergebied)
+//fetch geodata from selling points
+getData(geoVerkoopPuntenURL)
     .then(response => response.json())
     .then(data => {
-        const capacityArray = filterArray(data, columnCapacity)
-        const sortedCapacity = sortArrayLargeToSmall(capacityArray)
-        console.log(sortedCapacity)
-        console.log(capacityArray)
+        const sellingPointLocations = filterArray(data, columnLocation)
+        console.log(sellingPointLocations[0])
+    })
+    .catch(error => {
+        console.log('ooops:', error)
     })
 
+//fetch tariefdeel API
+getData(tariefdeelURL)
+    .then(response => response.json())
+    .then(data => {
+        //filter arrays on columns
+        const amountPerStep = filterArray(data, columnAmountFarePart)
+        const stepSizeInMinutes = filterArray(data, columnStepSizeFarePart)
+        //calculate price per hour for sellingpoints
+        const pricePerHour = calculatePricePerHour(amountPerStep, stepSizeInMinutes)
+        //sort from large to small
+        const sortedPricePerHour = sortArrayLargeToSmall(pricePerHour)
+        console.log(pricePerHour)
+        console.log(sortedPricePerHour)
+
+    })
+    .catch(error => {
+        console.log('ooops', error)
+
+    })
+
+//returns price per hour, given is a price per step, and time in minutes for the step
+function calculatePricePerHour(stepSize, stepSizeInMinutes) {
+    const pricePerHour = [];
+    stepSizeInMinutes.forEach((step, index) => {
+        pricePerHour.push(stepSize[index] / step * 60)
+    })
+    return pricePerHour
+}
 
 //returns sorted array from small to large numbers
 function sortArraySmallToLarge(array) {
+    //copy arrays to remove reference to original array
     let newArray = copyArray(array)
     return newArray.sort((a, b) => {
         return a - b
