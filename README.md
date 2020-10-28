@@ -8,8 +8,9 @@ https://samslotemaker.github.io/functional-programming/week1/dataOpschonen/publi
 Waar ontstaan prijsverschillen bij het parkeren in Nederland?
 
 ### Deelvragen
-Is er een bepaalde groei van parkeerautomaten op verschillende plekken?
-Hangt de parkeerprijs samen met deze groei?
+* Is er een bepaalde groei van parkeerautomaten per jaar op verschillende plekken?
+* Hangt de parkeerprijs samen met deze groei?
+* Hangt de parkeerprijs samen met het gemiddelde vermogen/salaris per gebied?
 
 Ik verwacht dat er een grotere groei van parkeerautomaten is afgelopen jaren op gebieden waar de parkeerprijs hoger ligt. Ik denk dat er de afgelopen jaren een redelijke groei van nieuwe automaten is ontstaan door het veelvoudig gebruik van de auto. 
 
