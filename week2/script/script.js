@@ -7,35 +7,36 @@ const columnLocation = 'location'
 const columnStepSizeFarePart = 'stepsizefarepart'
 const columnAmountFarePart = 'amountfarepart'
 
-//fetch geodata from selling points
-getData(geoVerkoopPuntenURL)
-    .then(response => response.json())
-    .then(data => {
-        const sellingPointLocations = arrayManipulations.filterArray(data, columnLocation)
-        console.log(sellingPointLocations[0])
-    })
-    .catch(error => {
-        console.log('ooops:', error)
-    })
 
-//fetch tariefdeel API
-getData(tariefdeelURL)
-    .then(response => response.json())
-    .then(data => {
-        //filter arrays on columns
-        const amountPerStep = arrayManipulations.filterArray(data, columnAmountFarePart)
-        const stepSizeInMinutes = arrayManipulations.filterArray(data, columnStepSizeFarePart)
+const verkoopPunten = getData(geoVerkoopPuntenURL);
+const tariefDeel = getData(tariefdeelURL)
+const allPromises = Promise.all([verkoopPunten, tariefDeel]).then(res => {
+    const responses = res.map(response => response.json())
+    return Promise.all(responses)
+})
+
+allPromises.then(data => {
+
+        //ophalen arrays uit de data
+        const verkoopPuntenArray = data[0];
+        const tariefDeelArray = data[1]
+
+        //  filter arrays on columns
+        const sellingPointLocations = arrayManipulations.filterArray(verkoopPuntenArray, columnLocation)
+        const amountPerStep = arrayManipulations.filterArray(tariefDeelArray, columnAmountFarePart)
+        const stepSizeInMinutes = arrayManipulations.filterArray(tariefDeelArray, columnStepSizeFarePart)
         //calculate price per hour for sellingpoints
         const pricePerHour = calculations.calculatePricePerHour(amountPerStep, stepSizeInMinutes)
         //sort from large to small
         const sortedPricePerHour = arrayManipulations.sortArrayLargeToSmall(pricePerHour)
 
+        console.log(sellingPointLocations[0])
         console.log(pricePerHour)
         console.log(sortedPricePerHour)
+
     })
-    .catch(error => {
-        console.log('ooops', error)
-    })
+    .catch(err =>
+        console.log('oooooops:', err))
 
 //returns promise with data from given url
 function getData(url) {
