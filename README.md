@@ -1,5 +1,9 @@
 # functional-programming
 
+Week 1
+Het resultaat van week 1 is te vinden op github pages
+https://samslotemaker.github.io/functional-programming/week1/dataOpschonen/public/index.html
+
 ## Hoofdvraag
 Waar ontstaan prijsverschillen bij het parkeren in Nederland?
 
@@ -25,3 +29,5 @@ Tariefdeel: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-
  API eindpunt: https://opendata.rdw.nl/resource/534e-5vdg.json?$limit=10000
 
  Ik kan bovenstaande tabellen combineren door de aanwezigheid van een areaManagerId in beide tabellen.
+
+
