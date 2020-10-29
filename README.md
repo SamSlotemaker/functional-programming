@@ -19,8 +19,11 @@ Waardoor onstaat vernieuwing bij parkeergelegenheden?
 
 ### Deelvragen
 * Is er een bepaalde groei van parkeerautomaten per jaar op verschillende plekken?
+    - beschikbare data: GEO informatie van verkooppunten: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEO-VERKOOPPUNT/cgqw-pfbp/data
 * Hangt de parkeerprijs samen met deze groei?
+    - beschikbare data: prijzen van parkeergebieden https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg/data
 * Hangt de parkeerprijs/groei in automaten samen met het gemiddelde vermogen/salaris per gebied?
+    - beschikbare data: CSV met vermogen per gemeenten: https://www.cbs.nl/nl-nl/nieuws/2019/47/vermogen-van-huishoudens-opnieuw-gestegen
 
 Ik verwacht dat er een grotere groei van parkeerautomaten is afgelopen jaren op gebieden waar de parkeerprijs hoger ligt. Ik denk dat er de afgelopen jaren een redelijke groei van nieuwe automaten is ontstaan door het veelvoudig gebruik van de auto. 
 

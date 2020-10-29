@@ -25,3 +25,7 @@ export function copyArray(array) {
 export function filterArray(array, column) {
     return array.map(arrayItem => arrayItem[column])
 }
+
+export function uniqueArray(array) {
+    return [...new Set(array)];
+}
