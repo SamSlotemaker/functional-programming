@@ -13,7 +13,7 @@ body {
 }
 
 #svg-container {
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
     display: grid;
     place-items: center;
