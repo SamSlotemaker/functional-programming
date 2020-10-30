@@ -1,17 +1,32 @@
-//returns sorted array from small to large numbers
-export function sortArraySmallToLarge(array) {
-    //copy arrays to remove reference to original array
+//returns sorted array from small to large
+export function sortArraySmallToLarge(array, property) {
     let newArray = copyArray(array)
+    //check of er een property is meegegeven voor sorteren van objecten
+    if (typeof property == 'undefined') { //geen property meegegeven
+        let newArray = copyArray(array)
+        return newArray.sort((a, b) => {
+            return a - b
+        })
+    }
+    //wel property meegegeven
     return newArray.sort((a, b) => {
-        return a - b
+        return a[property] - b[property]
     })
 }
 
-//returns sorted array from large to small numbers
-export function sortArrayLargeToSmall(array) {
+//returns sorted array from large to small
+export function sortArrayLargeToSmall(array, property) {
     let newArray = copyArray(array)
+    //check of er een property is meegegeven voor sorteren van objecten
+    if (typeof property == 'undefined') { //geen property meegegeven
+        let newArray = copyArray(array)
+        return newArray.sort((a, b) => {
+            return b - a
+        })
+    }
+    //wel property meegegeven
     return newArray.sort((a, b) => {
-        return b - a
+        return b[property] - a[property]
     })
 }
 

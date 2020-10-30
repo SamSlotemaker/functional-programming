@@ -14,16 +14,20 @@
  //counts all items in array
  export function countItemsinArray(array) {
      let allItems = uniqueArray(array) //maak array van alle unieke jaartallen
-     let counter = {} //maak counter object dat later gevuld wordt
+     let counter = [] //maak counter object dat later gevuld wordt
 
      allItems.forEach(item => {
-         counter[item] = 0
+         counter.push({
+             "jaar": item,
+             "aantal": 0
+         })
+
      })
 
      for (let i = 0; i < array.length; ++i) { //loop over volledige array
          for (let j = 0; j < allItems.length; j++) { //loop over unieke jaartallen voor iedere waarde in volledige array
              if (array[i] == allItems[j])
-                 counter[allItems[j]] += 1
+                 counter[j].aantal += 1;
 
          }
      }

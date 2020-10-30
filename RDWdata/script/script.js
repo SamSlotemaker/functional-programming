@@ -1,8 +1,9 @@
 import * as arrayManipulations from './modules/arrayManipulations.js'
 import * as calculations from './modules/calculations.js'
 import * as cleanData from './modules/cleanData.js'
+import * as d3Charts from './modules/d3charts.js'
 
-const geoVerkoopPuntenURL = 'https://opendata.rdw.nl/resource/cgqw-pfbp.json?$limit=100'
+const geoVerkoopPuntenURL = 'https://opendata.rdw.nl/resource/cgqw-pfbp.json?$limit=10000'
 const tariefdeelURL = 'https://opendata.rdw.nl/resource/534e-5vdg.json?$limit=100'
 const columnLocation = 'location'
 const columnStartDateSellingpoint = 'startdatesellingpoint'
@@ -45,23 +46,20 @@ allPromises.then(data => {
         const stepSizeInMinutes = arrayManipulations.filterArray(tariefDeelArray, columnStepSizeFarePart)
         //calculate price per hour for sellingpoints
         const pricePerHour = calculations.calculatePricePerHour(amountPerStep, stepSizeInMinutes)
-        //sort from large to small
+        //sort price per hour from large to small
         const sortedPricePerHour = arrayManipulations.sortArrayLargeToSmall(pricePerHour)
 
-        //refactor dates and check years
+        //refactor date strings to objects
         const refactoredSellingPointDates = cleanData.refactorDates(sellingPointDate)
+
         const sellingPointYears = refactoredSellingPointDates.map(date => date.year)
         const countedYears = calculations.countItemsinArray(sellingPointYears)
+        const countedYearsSorted = arrayManipulations.sortArrayLargeToSmall(countedYears, 'aantal')
 
-        console.log("volledige array: ", sellingPointYears)
-        console.log("unieke jaren: ", arrayManipulations.uniqueArray(sellingPointYears))
         console.log("getelde jaren: ", countedYears)
 
-
-        // console.log(arrayManipulations.uniqueArray(sellingPointYears))
-        // console.log(sellingPointLocations[0])
-        // console.log(pricePerHour)
-        // console.log(sortedPricePerHour)
+        //maak bar chart met meegegeven x en y axis
+        d3Charts.createBarChart(countedYearsSorted, 'aantal', 'jaar')
 
     })
     .catch(err =>
