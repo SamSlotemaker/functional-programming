@@ -10,7 +10,7 @@ export function createBarChart(array, x, y) {
     const xValue = d => d[x]
     const yValue = d => d[y]
     const margin = {
-        top: 20,
+        top: 0,
         right: 20,
         bottom: 20,
         left: 50

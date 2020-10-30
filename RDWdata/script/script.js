@@ -10,6 +10,10 @@ const columnStartDateSellingpoint = 'startdatesellingpoint'
 const columnStepSizeFarePart = 'stepsizefarepart'
 const columnAmountFarePart = 'amountfarepart'
 
+const buttonJaar = document.querySelector('#svg-container > div > div button:first-of-type')
+const buttonAantal = document.querySelector('#svg-container > div > div button:last-of-type')
+console.log(buttonJaar, buttonAantal)
+
 
 const verkoopPunten = getData(geoVerkoopPuntenURL);
 const tariefDeel = getData(tariefdeelURL)
@@ -55,11 +59,23 @@ allPromises.then(data => {
         const sellingPointYears = refactoredSellingPointDates.map(date => date.year)
         const countedYears = calculations.countItemsinArray(sellingPointYears)
         const countedYearsSorted = arrayManipulations.sortArrayLargeToSmall(countedYears, 'aantal')
+        const countedYearsSortedByYears = arrayManipulations.sortArrayLargeToSmall(countedYears, 'jaar')
 
         console.log("getelde jaren: ", countedYears)
 
-        //maak bar chart met meegegeven x en y axis
-        d3Charts.createBarChart(countedYearsSorted, 'aantal', 'jaar')
+        //maak bar chart met meegegeven x en y axis 
+        function ceateChartAantal(e) {
+            removeSVG()
+            if (e.target.innerHTML == 'Aantal') {
+                d3Charts.createBarChart(countedYearsSorted, 'aantal', 'jaar')
+            } else {
+                d3Charts.createBarChart(countedYearsSortedByYears, 'aantal', 'jaar')
+            }
+        }
+        //kies sorteer optie doormiddel van knoppen
+        buttonJaar.addEventListener('click', ceateChartAantal)
+        buttonAantal.addEventListener('click', ceateChartAantal)
+
 
     })
     .catch(err =>
@@ -68,4 +84,11 @@ allPromises.then(data => {
 //returns promise with data from given url
 function getData(url) {
     return fetch(url)
+}
+
+function removeSVG() {
+    let SVG = document.querySelector('svg')
+    if (SVG) {
+        SVG.remove();
+    }
 }
