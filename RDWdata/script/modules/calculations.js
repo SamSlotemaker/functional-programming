@@ -16,6 +16,7 @@
      let allItems = uniqueArray(array) //maak array van alle unieke jaartallen
      let counter = [] //maak counter object dat later gevuld wordt
 
+     //vol object counter met default value 0 voor elk jaar
      allItems.forEach(item => {
          counter.push({
              "jaar": item,
