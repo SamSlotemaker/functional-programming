@@ -42,7 +42,6 @@ export function createBarChart(array, x, y) {
         //voeg groep toe en creer yas label
         g.append('g').call(d3.axisBottom(xScale))
             .attr('transform', `translate(0, ${innerHeight})`)
-        console.log(yScale.bandwidth())
         //selecteer alle rectangles in parent element 'g'
         g.selectAll('rect').data(data)
             .enter().append('rect') //voeg rectangles toe wanneer deze niet bestaan

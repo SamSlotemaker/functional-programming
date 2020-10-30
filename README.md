@@ -12,10 +12,12 @@ Voor mijn volledige proces kun je naar de Wiki navigeren, waar ik mijn proces en
 https://github.com/SamSlotemaker/functional-programming/wiki
 
 #### Week 1
+![Imgur](https://imgur.com/fyftCtr.gif)
 Het resultaat van week 1 is te vinden op github pages
-https://samslotemaker.github.io/functional-programming/week1/dataOpschonen/public/index.html
+https://samslotemaker.github.io/functional-programming/SURVEYdata/dataOpschonen/public/index.html
 
 #### Week 2
+![Imgur](https://imgur.com/aNpveBh.png)
 Huidige status week 2:
 https://samslotemaker.github.io/functional-programming/RDWdata/
 
