@@ -1,9 +1,13 @@
 export function createBarChart(array, x, y) {
     const container = document.querySelector('#svg-container')
+    //grootte van de container
     const containerWidth = container.offsetWidth;
     const containerHeight = container.offsetHeight
+
+    //selecteer de container, en voeg een svg toe die even groot is (-100px)
     const svg = d3.select('#svg-container')
         .append("svg").attr("width", containerWidth - 100).attr("height", containerHeight - 100);
+    //grootte van svg
     const width = +svg.attr('width')
     const height = +svg.attr('height')
 

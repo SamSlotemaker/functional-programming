@@ -40,7 +40,7 @@ export function copyArray(array) {
 export function filterArray(array, column) {
     return array.map(arrayItem => arrayItem[column])
 }
-
+//return een array met alle unieke waardes van de meegegeven array
 export function uniqueArray(array) {
     return [...new Set(array)];
 }
