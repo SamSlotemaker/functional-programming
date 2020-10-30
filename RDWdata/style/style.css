@@ -17,6 +17,11 @@
 
 rect {
     fill: steelblue;
+
+}
+
+rect:hover {
+    fill: orangered;
 }
 
 text {
