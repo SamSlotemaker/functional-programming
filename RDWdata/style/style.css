@@ -20,6 +20,10 @@ rect {
 
 }
 
+h1 {
+    color: orangered;
+}
+
 rect:hover {
     fill: orangered;
 }
