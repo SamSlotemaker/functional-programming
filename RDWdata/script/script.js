@@ -66,7 +66,7 @@ allPromises.then(data => {
         //maak bar chart met meegegeven x en y axis 
         function ceateChartAantal(e) {
             removeSVG()
-            if (e.target.innerHTML == 'Aantal') {
+            if (e.target.textContent == 'Aantal') {
                 d3Charts.createBarChart(countedYearsSorted, 'aantal', 'jaar')
             } else {
                 d3Charts.createBarChart(countedYearsSortedByYears, 'aantal', 'jaar')
@@ -75,8 +75,6 @@ allPromises.then(data => {
         //kies sorteer optie doormiddel van knoppen
         buttonJaar.addEventListener('click', ceateChartAantal)
         buttonAantal.addEventListener('click', ceateChartAantal)
-
-
     })
     .catch(err =>
         console.log('oooooops:', err))

@@ -21,10 +21,35 @@ body {
 
 #svg-container>div {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     width: 80%;
     color: white
+}
+
+#svg-container>div>div {
+    min-width: 21em;
+    margin: 1em;
+}
+
+#svg-container>div>div button {
+    border: none;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    margin: 0.6em;
+    padding: 1em 2em;
+    border-radius: 0.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+
+}
+
+#svg-container>div>div button:hover {
+    transform: scale(1.1);
+    background-color: lightblue;
 }
 
 rect {
