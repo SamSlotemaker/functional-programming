@@ -21,14 +21,12 @@
              "jaar": item,
              "aantal": 0
          })
-
      })
 
      for (let i = 0; i < array.length; ++i) { //loop over volledige array
          for (let j = 0; j < allItems.length; j++) { //loop over unieke jaartallen voor iedere waarde in volledige array
              if (array[i] == allItems[j])
                  counter[j].aantal += 1;
-
          }
      }
      return counter;

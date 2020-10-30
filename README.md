@@ -7,10 +7,17 @@ In deze repo vind je mijn proces van het vak functional programming, een 2 weken
 ### :red_car:  Opdracht 
 De opdracht is het maken van een verhalende visualisatie voor de Volkskrant, met als thema 'de auto in de stad'. Hierbij is het zaak dat er een nieuwswaarde aan het verhaal hangt en alles een geheel vormt. 
 
+### Proces
+Voor mijn volledige proces kun je naar de Wiki navigeren, waar ik mijn proces en denkwijze documenteer
+https://github.com/SamSlotemaker/functional-programming/wiki
 
 #### Week 1
 Het resultaat van week 1 is te vinden op github pages
 https://samslotemaker.github.io/functional-programming/week1/dataOpschonen/public/index.html
+
+#### Week 2
+Huidige status week 2:
+https://samslotemaker.github.io/functional-programming/RDWdata/
 
 
 ## :pencil: Concept 
@@ -58,3 +65,5 @@ git clone https://github.com/SamSlotemaker/functional-programming.git
 ## :heart: Aknowledgement
 * StackOverflow voor bug fixes
 * Medium voor aanvullende informatie
+* HvA Tech-Track docenten
+* Medestudenten
