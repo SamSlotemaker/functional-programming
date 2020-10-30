@@ -63,9 +63,13 @@ allPromises.then(data => {
 
         console.log("getelde jaren: ", countedYears)
 
+        /*********************************/
+        /***************D3****************/
+        /*********************************/
+
         //maak bar chart met meegegeven x en y axis 
         function ceateChartAantal(e) {
-            removeSVG()
+            removeSVG() //verwijder vorige grafiek wanneer deze bestond
             if (e.target.textContent == 'Aantal') {
                 d3Charts.createBarChart(countedYearsSorted, 'aantal', 'jaar')
             } else {
