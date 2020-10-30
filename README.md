@@ -23,17 +23,17 @@ https://samslotemaker.github.io/functional-programming/RDWdata/
 ## :pencil: Concept 
 ### Hoofdvraag
 Bestaat er een samenhang van parkeerverniewing en welvaart?
-- te meten door gemiddeld vermogen per gemeente en parkeerprijs
+- te meten door gemiddeld vermogen per gemeente en parkeerprijs, waarbij parkeervernieuwing de groei is in nieuwe parkeergelegenheden, carpoollocaties en parkeerautomaten
 
 ### Deelvragen
-* Op welke plaatsen en in welk jaar is er groei onstaan in hoeveelheid parkeerautomaten/garages/carpoollocaties?
+* Op welke plaatsen en in welk jaar is er sprake van groei in hoeveelheid parkeerautomaten/garages/carpoollocaties?
     - beschikbare data: GEO informatie van verkooppunten: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEO-VERKOOPPUNT/cgqw-pfbp/data
     - Parkeergarages: https://opendata.rdw.nl/Parkeren/GEO-Parkeer-Garages/t5pc-eb34/data
     - Carpoollocaties: https://opendata.rdw.nl/Parkeren/GEO-Carpool/9c54-cmfx/data
     - parkeerlocaties: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GPS-CO-RDINATEN-PARKEERLOCATIE/k3dr-ge3w/data
-* Hangt de parkeerprijs samen met deze groei?
+* Is deze groei hoger op plaatsen waar de parkeerprijs duurder is? 
     - beschikbare data: prijzen van parkeergebieden https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg/data
-* Hangt de parkeerprijs/groei samen met het gemiddelde vermogen/salaris per gebied?
+* Is deze groei hoger op plaatsen waar het gemiddelde vermogen van de gemeente groter is?
     - beschikbare data: CSV met vermogen per gemeenten: https://www.cbs.nl/nl-nl/nieuws/2019/47/vermogen-van-huishoudens-opnieuw-gestegen
 
 Ik verwacht dat er een grotere groei is afgelopen jaren op gebieden waar de parkeerprijs hoger ligt. Ik denk dat er de afgelopen jaren een redelijke groei van nieuwe automaten is ontstaan door het veelvoudig gebruik van de auto.  
