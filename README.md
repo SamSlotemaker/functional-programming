@@ -23,39 +23,49 @@ https://samslotemaker.github.io/functional-programming/RDWdata/
 
 
 ## :pencil: Concept 
-### Hoofdvraag
-Bestaat er een samenhang van parkeerverniewing en welvaart?
-- te meten door gemiddeld vermogen per gemeente en parkeerprijs, waarbij parkeervernieuwing de groei is in nieuwe parkeergelegenheden, carpoollocaties en parkeerautomaten
 
-### Deelvragen
-* Op welke plaatsen en in welk jaar is er sprake van groei in hoeveelheid parkeerautomaten/garages/carpoollocaties?
-    - beschikbare data: GEO informatie van verkooppunten: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEO-VERKOOPPUNT/cgqw-pfbp/data
-    - Parkeergarages: https://opendata.rdw.nl/Parkeren/GEO-Parkeer-Garages/t5pc-eb34/data
-    - Carpoollocaties: https://opendata.rdw.nl/Parkeren/GEO-Carpool/9c54-cmfx/data
-    - parkeerlocaties: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GPS-CO-RDINATEN-PARKEERLOCATIE/k3dr-ge3w/data
-* Is deze groei hoger op plaatsen waar de parkeerprijs duurder is? 
-    - beschikbare data: prijzen van parkeergebieden https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg/data
-* Is deze groei hoger op plaatsen waar het gemiddelde vermogen van de gemeente groter is?
-    - beschikbare data: CSV met vermogen per gemeenten: https://www.cbs.nl/nl-nl/nieuws/2019/47/vermogen-van-huishoudens-opnieuw-gestegen
+## ❓ Hoofdvraag
+Is er samenhang te vinden tussen parkeerverniewing in gemeentes en de welvaart van deze spefieke gemeente?
+_Dit is te meten door gemiddeld vermogen en de parkeerprijs per locatie, waarbij parkeervernieuwing de groei is in nieuwe parkeergelegenheden, carpoollocaties en parkeerautomaten_
 
-Ik verwacht dat er een grotere groei is afgelopen jaren op gebieden waar de parkeerprijs hoger ligt. Ik denk dat er de afgelopen jaren een redelijke groei van nieuwe automaten is ontstaan door het veelvoudig gebruik van de auto.  
+## ❔ Deelvragen
+**1. Op welke plaatsen en in welk jaar is er sprake van vernieuwing (groei in hoeveelheid parkeerautomaten/garages/carpoollocaties)?**    
+_beschikbare data:_
+* [GEO informatie van verkooppunten](https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEO-VERKOOPPUNT/cgqw-pfbp/data)
+   * Startsellingpoint: datum waarop verkooppunt actief werd
+   * Location: geolocatie
+* [Parkeergarages](https://opendata.rdw.nl/Parkeren/GEO-Parkeer-Garages/t5pc-eb34/data)
+   * Startdatearea: datum waarop de garage actief werd
+   * Location: geolocatie
+* [Carpoollocaties](https://opendata.rdw.nl/Parkeren/GEO-Carpool/9c54-cmfx/data)
+   * Startdatearea: datum waarop de carpoollocatie actief werd
+   * Location: geolocatie
 
-### Data
-De tabellen en kolommen die ik hiervoor ga gebruiken zijn: 
+**Verwachting:** Ik verwacht dat er in grote steden een grotere groei te zien is, vooral de afgelopen jaren doordat er steeds meer auto's op de weg komen. 
+***
 
-GEO verkooppunten: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEO-VERKOOPPUNT/cgqw-pfbp/data
- - Start selling point: op welke datum is het verkooppunt in gebruik gegaan
- - Location: lengte en breedte graden van het verkooppunt
- - Selling point description: Beschrijving van de locatie.
- API eindpunt: https://opendata.rdw.nl/resource/cgqw-pfbp.json?$limit=10000
+**2. Is deze groei hoger op plaatsen waar de parkeerprijs duurder is?**    
+_beschikbare data:_
+* [Prijzen van parkeergebieden](https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg/data)
+    * AreaManagerId - nodig om te koppelen aan een andere tabel om zo de geolocatie te achterhalen
+    * AmountFarePart - prijs in euro's per stap
+    * StepSizeFarePart - grootte van de stap in minuten
+_Bovenstaande data kan ik gebruiken om een uurprijs te bepalen_
 
-Tariefdeel: https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-TARIEFDEEL/534e-5vdg/data
- - AmountFarePart: prijs in euro's per stap
- - StepSizeFarePart: grootte van stap in minuten
- Bovenstaande kolommen kan ik omrekenen naar de uurprijs van het gebied.    
- API eindpunt: https://opendata.rdw.nl/resource/534e-5vdg.json?$limit=10000
+**Verwachting:** Ik verwacht dat er zeker een verband is tussen prijs en vernieuwing. Ik denk dat ik wel in mijn achterhoofd moet houden dat de prijs in steden waarschijnlijk hoger ligt, dus dat de vernieuwing ook kan komen doordat steden simpelweg voller raken.
+***
 
- Ik kan bovenstaande tabellen combineren door de aanwezigheid van een areaManagerId in beide tabellen.
+**3. Is deze groei hoger op plaatsen waar het gemiddelde vermogen van de gemeente groter is?**    
+_beschikbare data:_     
+* [CSV met vermogen per gemeenten](https://www.cbs.nl/nl-nl/nieuws/2019/47/vermogen-van-huishoudens-opnieuw-gestegen)
+   * Gemeente
+   * Gemiddeld vermogen per huishouden - toont welvaart aan binnen de regio
+
+**Verwachting:** Ik verwacht niet perse dat het vermogen van huishoudens in contact staat met een groot vernieuwing in parkeergelegenheden. Ik denk juist dat een gebied dat veel welvaart heeft, minder externe parkeergelegenheid nodig heeft
+***
+
+Om mijn concept uit te werken wil ik alle geolocaties omzetten naar plaatsnamen. Hiermee kan ik met alle uurprijzen een gemiddelde prijs bepalen per plaats en op deze manier de prijzen, vermogens en vernieuwing samenvoegen.
+
 
 ## :gear: Installation
 1. Clone deze repository
